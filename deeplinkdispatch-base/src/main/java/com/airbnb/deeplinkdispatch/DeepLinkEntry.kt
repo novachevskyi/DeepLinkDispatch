@@ -126,7 +126,7 @@ sealed class DeepLinkEntry(open val uriTemplate: String, open val className: Str
      */
     override fun compareTo(other: DeepLinkEntry): Int {
         return when {
-            this.firstNonConcreteIndex < other.firstNonConcreteIndex -> -1
+            this.firstNonConcreteIndex < other.firstNonConcreteIndex -> 1
             this.firstNonConcreteIndex == other.firstNonConcreteIndex -> {
                 if (this.firstNonConcreteIndex == -1 || uriTemplate[firstNonConcreteIndex] == other.uriTemplate[firstNonConcreteIndex]) {
                     0
@@ -134,7 +134,7 @@ sealed class DeepLinkEntry(open val uriTemplate: String, open val className: Str
                     -1
                 } else 1
             }
-            else -> 1
+            else -> -1
         }
     }
 }
